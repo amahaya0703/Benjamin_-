@@ -1,32 +1,35 @@
 <template>
   <div class="app">
     <ul>
-      <li v-for="prefPost in prefPosts" :key="prefPost.prefName">
-      <label for="pref">
+      <li v-for="prefPost in prefPosts" :key="prefPost.id">
+      <label :for="prefPost.id">
         <input
         type="checkbox"
-        id="pref"
+        :id="prefPost.id"
+        :checked="prefPost.isChecked"
+        :value="prefPost.name"
         v-model="eventData.target"
         >
-        {{prefPost.prefName}}
+        {{prefPost.name}}
       </label>
       </li>
+      <p>{{eventData.target}}</p>
     </ul>
   </div>
 </template>
 
 <script>
+
 export default {
   props: ["prefPosts"],
   data() {
     return {
       eventData: {
-        target: []
+        target: [],
+        tests:[]
       }
     }
   }
-
-
 }
 </script>
 
