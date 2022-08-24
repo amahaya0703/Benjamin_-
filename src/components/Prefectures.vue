@@ -25,8 +25,7 @@ export default {
   data() {
     return {
       eventData: {
-        target: [],
-        tests:[]
+        target: []
       }
     }
   }
