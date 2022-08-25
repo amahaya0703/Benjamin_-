@@ -8,7 +8,7 @@
         :id="prefPost.id"
         :checked="prefPost.isChecked"
         :value="prefPost.name"
-        v-model="eventData.target"
+        @click="table(prefPost.id,prefPost.name)"
         >
         {{prefPost.name}}
       </label>
@@ -19,7 +19,6 @@
 </template>
 
 <script>
-
 export default {
   props: ["prefPosts"],
   data() {
@@ -27,6 +26,11 @@ export default {
       eventData: {
         target: []
       }
+    }
+  },
+  methods: {
+    table(id, name) {
+      this.$emit("on-table",id,name);
     }
   }
 }

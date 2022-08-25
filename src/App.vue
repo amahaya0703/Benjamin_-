@@ -1,27 +1,18 @@
 <template>
   <div>
     <h2>都道府県一覧</h2>
-    <Prefectures :prefPosts="posts"></Prefectures>
+    <Prefectures :prefPosts="posts" @on-table="Diagram"></Prefectures>
     <ul>
-      <li>{{}}</li>
-      <li>{{}}</li>
-      <li>{{}}</li>
-      <li>{{}}</li>
+      <li v-for="totalpopu in totalpopus " :key="totalpopu.year">{{totalpopu}}</li>
     </ul>
+    <!-- <Prefectures></Prefectures>
+    <Prefectures></Prefectures>
+    <Prefectures></Prefectures>
+    <Prefectures></Prefectures> -->
   </div>
 </template>
 
 <script>
-const populationUrl = `https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear?prefCode=1`
-const apiUrl = "https://opendata.resas-portal.go.jp/api/v1/prefectures"
-const apiKey = "nyB4LKskiLFNzAYzdoIcbnaovQkWIvATq6O9GOCc"
-const config = {
-  headers: {
-    'Content-Type': 'application/json',
-    'x-api-key': apiKey
-  }
-};
-
 import Prefectures from "./components/Prefectures.vue";
 import axios from "axios";
 
@@ -39,6 +30,16 @@ export default {
     Prefectures
   },
   created() {
+    const populationUrl = `https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear?prefCode=1`
+    const apiUrl = "https://opendata.resas-portal.go.jp/api/v1/prefectures"
+    const apiKey = "nyB4LKskiLFNzAYzdoIcbnaovQkWIvATq6O9GOCc"
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': apiKey
+      }
+    };
+
     axios.get(apiUrl, config)
       .then(response => {
         this.posts = response.data.result.map(val => {
@@ -49,9 +50,11 @@ export default {
           };
         });
       }),
-    axios.get(populationUrl, config)
+
+      axios.get(populationUrl, config)
       .then(response => {
          // 総人口
+
         this.totalpopus = response.data.result.data[0].data.map(val => {
           return {
             year: val["year"],
@@ -83,6 +86,12 @@ export default {
           };
         });
       })
+  },
+  methods: {
+    Diagram(value) {
+      console.log(value);
+      this.posts = value
+    }
   }
 }
 </script>
