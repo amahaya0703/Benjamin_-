@@ -2,10 +2,7 @@
   <div>
     <h2>都道府県一覧</h2>
     <Prefectures :prefPosts="posts" @on-table="Diagram"></Prefectures>
-    <demoGraphics :totals="totalpopus"></demoGraphics>
-    <demoGraphics :youngs="youngpopus"></demoGraphics>
-    <demoGraphics :workings="workingpopus"></demoGraphics>
-    <demoGraphics :olds="oldpous"></demoGraphics>
+    <demoGraphics :totals="totalpopus" :youngs="youngpopus" :workings="workingpopus" :olds="oldpous"></demoGraphics>
   </div>
 </template>
 
