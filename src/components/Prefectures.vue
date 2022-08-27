@@ -13,7 +13,6 @@
         {{prefPost.name}}
       </label>
       </li>
-      <p>{{eventData.target}}</p>
     </ul>
   </div>
 </template>
@@ -21,13 +20,6 @@
 <script>
 export default {
   props: ["prefPosts"],
-  data() {
-    return {
-      eventData: {
-        target: []
-      }
-    }
-  },
   methods: {
     table(id, name) {
       this.$emit("on-table",id,name);
