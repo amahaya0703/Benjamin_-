@@ -40,8 +40,7 @@ const config = {
         this.posts = response.data.result.map(val => {
           return {
             id: val["prefCode"],
-            name: val["prefName"],
-            isChecked: false
+            name: val["prefName"]
           };
         });
       })

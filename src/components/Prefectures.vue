@@ -4,11 +4,10 @@
       <li v-for="prefPost in prefPosts" :key="prefPost.id">
       <label :for="prefPost.id">
         <input
-        type="checkbox"
+        type="radio"
         :id="prefPost.id"
-        :checked="prefPost.isChecked"
         :value="prefPost.name"
-        @click="table(prefPost.id, prefPost.name) "
+        @click.once="table(prefPost.id, prefPost.name)"
         >
         {{prefPost.name}}
       </label>
@@ -18,10 +17,11 @@
 </template>
 
 <script>
+
 export default {
   props: ["prefPosts"],
   methods: {
-    table(id, name) {
+    table(id,name) {
       this.$emit("on-table",id,name);
     }
   }

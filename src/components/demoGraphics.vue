@@ -80,8 +80,7 @@ export default {
   },
   methods: {
     testTest() {
-      this.totals[0].year
-      console.log(this.totals[0].year);
+      this.totals[0].value - this.totals[1].value;
     }
   }
 }
@@ -89,7 +88,11 @@ export default {
 
 <style scoped>
 table{
-  display: flex;
+  display: grid;
+  grid-template-columns: 3fr 3fr 3fr 3fr;
+}
+th{
+  padding-right: 30px;
 }
 .total,.young,.working,.old{
   display: flex;
