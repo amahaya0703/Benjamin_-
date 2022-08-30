@@ -4,8 +4,9 @@
       <li v-for="prefPost in prefPosts" :key="prefPost.id">
       <label :for="prefPost.id">
         <input
-        type="radio"
+        type="checkbox"
         :id="prefPost.id"
+        v-model="test"
         :value="prefPost.name"
         @click.once="table(prefPost.id, prefPost.name)"
         >
@@ -20,6 +21,22 @@
 
 export default {
   props: ["prefPosts"],
+  data() {
+    return {
+      test:false
+    }
+  },
+  watch: {
+    test: {
+      handler(){
+        if (this.test > 1) {
+          this.test = true
+        } else {
+          this.test = false
+        }
+      }
+    }
+  },
   methods: {
     table(id,name) {
       this.$emit("on-table",id,name);
