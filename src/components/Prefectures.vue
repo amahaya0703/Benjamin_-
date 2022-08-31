@@ -6,9 +6,10 @@
         <input
         type="checkbox"
         :id="prefPost.id"
-        v-model="test"
+
+        v-model="prefPost.isChecked"
         :value="prefPost.name"
-        @click.once="table(prefPost.id, prefPost.name)"
+        @change="table(prefPost.id, prefPost.name)"
         >
         {{prefPost.name}}
       </label>
@@ -23,23 +24,13 @@ export default {
   props: ["prefPosts"],
   data() {
     return {
-      test:false
-    }
-  },
-  watch: {
-    test: {
-      handler(){
-        if (this.test > 1) {
-          this.test = true
-        } else {
-          this.test = false
-        }
-      }
+      isChecked: true
     }
   },
   methods: {
-    table(id,name) {
-      this.$emit("on-table",id,name);
+    table(id, name) {
+  this.$emit("on-table",id,name);
+
     }
   }
 }

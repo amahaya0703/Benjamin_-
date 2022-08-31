@@ -77,11 +77,6 @@ export default {
     test() {
       return this.testTest();
     }
-  },
-  methods: {
-    testTest() {
-      this.totals[0].value - this.totals[1].value;
-    }
   }
 }
 </script>
