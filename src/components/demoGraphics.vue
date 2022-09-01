@@ -74,8 +74,8 @@ export default {
     oldSort() {
       return this.olds.slice().reverse();
     },
-    test() {
-      return this.testTest();
+    test(id) {
+      return this.totals[id] - this.totals[id - 1];
     }
   }
 }

@@ -6,10 +6,9 @@
         <input
         type="checkbox"
         :id="prefPost.id"
-
-        v-model="prefPost.isChecked"
+        :checked="prefPost.isChecked"
         :value="prefPost.name"
-        @change="table(prefPost.id, prefPost.name)"
+        @click.once="table(prefPost.id,prefPost.name)"
         >
         {{prefPost.name}}
       </label>
@@ -22,15 +21,9 @@
 
 export default {
   props: ["prefPosts"],
-  data() {
-    return {
-      isChecked: true
-    }
-  },
   methods: {
-    table(id, name) {
-  this.$emit("on-table",id,name);
-
+    table(id,name) {
+      this.$emit("on-table", id, name);
     }
   }
 }
