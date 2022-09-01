@@ -11,7 +11,6 @@
           <tr v-for="total in totalSort " :key="`total-${total.year}`">
           <th>{{total.year}}</th>
           <th>{{total.value}}</th>
-          <th>{{test}}</th>
         </tr>
         </thead>
       </div>
@@ -73,9 +72,6 @@ export default {
     },
     oldSort() {
       return this.olds.slice().reverse();
-    },
-    test(id) {
-      return this.totals[id] - this.totals[id - 1];
     }
   }
 }

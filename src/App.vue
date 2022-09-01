@@ -59,6 +59,7 @@ const config = {
               value: val["value"]
             };
           });
+
           // 年少人口
           this.youngpopus = response.data.result.data[1].data.map(val => {
             return {
