@@ -63,9 +63,7 @@ const config = {
       axios.get(`https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear?prefCode=${value}`, config)
         .then(response => {
           // 総人口
-
           this.totalpopus = response.data.result.data[0].data.map(val => {
-            console.log(val.ama);
             return {
               year: val["year"],
               value: val["value"]

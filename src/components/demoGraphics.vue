@@ -76,7 +76,7 @@ export default {
     },
     test() {
       for (let i = 0; i < this.totalSort.length; i++) {
-        return this.totalSort[i + 1].value / this.totalSort[i].value * 100;
+        return this.totalSort[i+1].value/this.totalSort[i].value *100;
       }
     }
   }
