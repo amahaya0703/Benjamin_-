@@ -58,6 +58,8 @@
   </div>
 </template>
 
+
+
 <script>
 export default {
   props: ["totals", "youngs", "workings", "olds"],
@@ -74,13 +76,13 @@ export default {
     oldSort() {
       return this.olds.slice().reverse();
     },
-    test() {
+    test(){
       for (let i = 0; i < this.totalSort.length; i++) {
-        return this.totalSort[i + 1].value / this.totalSort[i].value * 100;
+        return this.totalSort[i+1].value/this.totalSort[i].value*100;
       }
     }
-  }
-  }
+}
+}
 </script>
 
 <style scoped>
