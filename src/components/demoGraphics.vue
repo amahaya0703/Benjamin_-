@@ -11,6 +11,7 @@
           <tr v-for="total in totalSort " :key="`total-${total.year}`">
           <th>{{total.year}}</th>
           <th>{{total.value}}</th>
+          <th>{{test}}</th>
         </tr>
         </thead>
       </div>
@@ -72,9 +73,14 @@ export default {
     },
     oldSort() {
       return this.olds.slice().reverse();
+    },
+    test() {
+      for (let i = 0; i < this.totalSort.length; i++) {
+        return this.totalSort[i + 1].value / this.totalSort[i].value * 100;
+      }
     }
   }
-}
+  }
 </script>
 
 <style scoped>

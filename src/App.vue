@@ -1,8 +1,16 @@
 <template>
   <div>
     <h2>都道府県一覧</h2>
-    <Prefectures :prefPosts="posts" @on-table="Diagram"></Prefectures>
-    <demoGraphics :totals="totalpopus" :youngs="youngpopus" :workings="workingpopus" :olds="oldpous"
+    <Prefectures
+    :prefPosts="posts"
+    @on-table="Diagram"
+    >
+    </Prefectures>
+    <demoGraphics
+    :totals="totalpopus"
+    :youngs="youngpopus"
+    :workings="workingpopus"
+    :olds="oldpous"
     ></demoGraphics>
   </div>
 </template>
@@ -47,6 +55,9 @@ const config = {
         });
       })
   },
+  mounted() {
+    console.log(this.$refs.texts);
+  },
   methods: {
     Diagram(value) {
       axios.get(`https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear?prefCode=${value}`, config)
@@ -54,6 +65,7 @@ const config = {
           // 総人口
 
           this.totalpopus = response.data.result.data[0].data.map(val => {
+            console.log(val.ama);
             return {
               year: val["year"],
               value: val["value"]
