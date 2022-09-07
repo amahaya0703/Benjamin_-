@@ -8,7 +8,7 @@
         :id="prefPost.id"
         :checked="prefPost.isChecked"
         :value="prefPost.name"
-        @click.once="table(prefPost.id,prefPost.name); testTest(prefPost.id)"
+        @click.once="table(prefPost.id,prefPost.name);"
         >
         {{prefPost.name}}
       </label>
