@@ -1,58 +1,17 @@
 <template>
   <div>
     <table>
-      <div class="total">
+      <div>
+        <p>TEST</p>
         <tbody>
-          <tr>
-          <td>総人口</td>
+            <tr v-for="(test,index) in ama" :key="test.label">
+            <th>{{index}}</th>
+            <th>{{test}}</th>
+          <th>{{test.label}}</th>
+          <th>{{test.data}}</th>
+          <th>{{testSort}}</th>
         </tr>
         </tbody>
-        <thead>
-          <tr v-for="total in totalSort " :key="`total-${total.year}`">
-          <th>{{total.year}}</th>
-          <th>{{total.value}}</th>
-          <th>{{total.value+1/total.value*100}}</th>
-        </tr>
-        </thead>
-      </div>
-      <div class="young">
-         <tbody>
-           <tr>
-          <td>年少人口</td>
-        </tr>
-        </tbody>
-        <thead>
-          <tr v-for="young in youngSort " :key="`young-${young.year}`">
-          <th>{{young.value}}</th>
-          <th>{{young.rate}}</th>
-        </tr>
-        </thead>
-      </div>
-      <div class="working">
-        <tbody>
-        <tr>
-          <td>生産年齢人口</td>
-        </tr>
-        </tbody>
-        <thead>
-          <tr v-for="working in workingSort " :key="`working-${working.year}`">
-          <th>{{working.value}}</th>
-          <th>{{working.rate}}</th>
-        </tr>
-        </thead>
-      </div>
-      <div class="old">
-        <tbody>
-          <tr>
-          <td>老年人口</td>
-        </tr>
-        </tbody>
-        <thead>
-          <tr v-for="old in oldSort " :key="`old-${old.year}`">
-          <th>{{old.value}}</th>
-          <th>{{old.rate}}</th>
-        </tr>
-        </thead>
       </div>
     </table>
   </div>
@@ -62,7 +21,7 @@
 
 <script>
 export default {
-  props: ["totals", "youngs", "workings", "olds"],
+  props: ["totals", "youngs", "workings", "olds", "testTests"],
   computed: {
     totalSort() {
       return this.totals.slice().reverse();
@@ -75,6 +34,19 @@ export default {
     },
     oldSort() {
       return this.olds.slice().reverse();
+    },
+    ama() {
+      return this.testTests.slice().reverse();
+    },
+    testSort() {
+      this.testTests.forEach(test => {
+        const texts = Object.values(test);
+        texts[1].forEach((value, index, array) => {
+          Object.keys(array[index]).forEach((key) => {
+            return array[index + 1].value / array[index].value * 100;
+          });
+        });
+      });
     }
   }
 }

@@ -11,6 +11,7 @@
     :youngs="youngpopus"
     :workings="workingpopus"
     :olds="oldpous"
+    :testTests="tests"
     ></demoGraphics>
   </div>
 </template>
@@ -36,7 +37,8 @@ const config = {
       totalpopus:[],
       youngpopus: [],
       workingpopus: [],
-      oldpous:[]
+      oldpous: [],
+      tests:[]
     }
   },
   components: {
@@ -54,9 +56,6 @@ const config = {
           };
         });
       })
-  },
-  mounted() {
-    console.log(this.$refs.texts);
   },
   methods: {
     Diagram(value) {
@@ -94,6 +93,20 @@ const config = {
               rate: val["rate"]
             };
           });
+
+          this.tests = response.data.result.data.map(val => {
+            return {
+              label: val["label"],
+              data: val["data"].map(val => {
+                return {
+                  year: val["year"],
+                  value: val["value"],
+                  rate: val["rate"]
+                }
+              })
+            };
+          });
+
         });
     }
   }
