@@ -7,10 +7,6 @@
     >
     </Prefectures>
     <demoGraphics
-    :totals="totalpopus"
-    :youngs="youngpopus"
-    :workings="workingpopus"
-    :olds="oldpous"
     :testTests="tests"
     ></demoGraphics>
   </div>
@@ -34,10 +30,6 @@ const config = {
   data() {
     return {
       posts: [],
-      totalpopus:[],
-      youngpopus: [],
-      workingpopus: [],
-      oldpous: [],
       tests:[]
     }
   },
@@ -61,38 +53,6 @@ const config = {
     Diagram(value) {
       axios.get(`https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear?prefCode=${value}`, config)
         .then(response => {
-          // 総人口
-          this.totalpopus = response.data.result.data[0].data.map(val => {
-            return {
-              year: val["year"],
-              value: val["value"]
-            };
-          });
-
-          // 年少人口
-          this.youngpopus = response.data.result.data[1].data.map(val => {
-            return {
-              year: val["year"],
-              value: val["value"],
-              rate: val["rate"]
-            };
-          });
-          // 生産年齢人口
-          this.workingpopus = response.data.result.data[2].data.map(val => {
-            return {
-              year: val["year"],
-              value: val["value"],
-              rate: val["rate"]
-            };
-          });
-          // 老年人口
-          this.oldpous = response.data.result.data[3].data.map(val => {
-            return {
-              year: val["year"],
-              value: val["value"],
-              rate: val["rate"]
-            };
-          });
 
           this.tests = response.data.result.data.map(val => {
             return {
@@ -106,9 +66,19 @@ const config = {
               })
             };
           });
-
         });
     }
   }
 }
 </script>
+
+<!-- for soujinkouArray{
+  // 今回
+  const base = soujinkouArray[i]
+  // 前回
+  const prev = soujinkouArray[i - 1]
+  const zoukaRate = base / prev * 100
+}
+
+
+. の前に?をつける事でudifundを無視できる。 -->

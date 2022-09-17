@@ -4,12 +4,11 @@
       <div>
         <p>TEST</p>
         <tbody>
-            <tr v-for="(test,index) in ama" :key="test.label">
+            <tr v-for="(test,index) in testSort" :key="test.label">
             <th>{{index}}</th>
             <th>{{test}}</th>
-          <th>{{test.label}}</th>
-          <th>{{test.data}}</th>
-          <th>{{testSort}}</th>
+            <th>{{test.label}}</th>
+            <th>{{test.data}}</th>
         </tr>
         </tbody>
       </div>
@@ -21,32 +20,12 @@
 
 <script>
 export default {
-  props: ["totals", "youngs", "workings", "olds", "testTests"],
+  props: ["testTests"],
   computed: {
-    totalSort() {
-      return this.totals.slice().reverse();
-    },
-    youngSort() {
-      return this.youngs.slice().reverse();
-    },
-    workingSort() {
-      return this.workings.slice().reverse();
-    },
-    oldSort() {
-      return this.olds.slice().reverse();
-    },
-    ama() {
-      return this.testTests.slice().reverse();
-    },
     testSort() {
-      this.testTests.forEach(test => {
-        const texts = Object.values(test);
-        texts[1].forEach((value, index, array) => {
-          Object.keys(array[index]).forEach((key) => {
-            return array[index + 1].value / array[index].value * 100;
-          });
-        });
-      });
+      console.log(this.testTests[0]?.data);
+      console.log(this.testTests[0]);
+     return this.testTests.slice().reverse();
     }
   }
 }
