@@ -71,14 +71,3 @@ const config = {
   }
 }
 </script>
-
-<!-- for soujinkouArray{
-  // 今回
-  const base = soujinkouArray[i]
-  // 前回
-  const prev = soujinkouArray[i - 1]
-  const zoukaRate = base / prev * 100
-}
-
-
-. の前に?をつける事でudifundを無視できる。 -->

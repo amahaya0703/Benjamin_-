@@ -4,11 +4,12 @@
       <div>
         <p>TEST</p>
         <tbody>
-            <tr v-for="(test,index) in testSort" :key="test.label">
+            <p>{{testlabel}}</p>
+            <tr v-for="(test,index) in testSortData" :key="test.year">
             <th>{{index}}</th>
-            <th>{{test}}</th>
-            <th>{{test.label}}</th>
-            <th>{{test.data}}</th>
+            <th>{{test.year}}</th>
+            <th>{{test.value}}</th>
+            <th>{{ Math.round(testSortData[index+1]?.value/testSortData[index]?.value*100)}}%</th>
         </tr>
         </tbody>
       </div>
@@ -17,16 +18,23 @@
 </template>
 
 
-
 <script>
 export default {
   props: ["testTests"],
   computed: {
-    testSort() {
-      console.log(this.testTests[0]?.data);
-      console.log(this.testTests[0]);
-     return this.testTests.slice().reverse();
-    }
+    testlabel() {
+      return this.testTests[0]?.label;
+    },
+    testSortData() {
+     return this.testTests[0]?.data.slice().reverse();
+    }//,
+    // amahaya() {
+    //    this.testTests[0]?.data.forEach((value, index, array) => {
+    //     array.map(val => {
+    //       return val.value;
+    //     })
+    //   });
+    // }
   }
 }
 </script>
