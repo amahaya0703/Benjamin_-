@@ -7,7 +7,7 @@
     >
     </Prefectures>
     <demoGraphics
-    :testTests="tests"
+    :Population="Demographics"
     ></demoGraphics>
   </div>
 </template>
@@ -30,7 +30,7 @@ const config = {
   data() {
     return {
       posts: [],
-      tests:[]
+      Demographics:[]
     }
   },
   components: {
@@ -54,7 +54,7 @@ const config = {
       axios.get(`https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear?prefCode=${value}`, config)
         .then(response => {
 
-          this.tests = response.data.result.data.map(val => {
+          this.Demographics = response.data.result.data.map(val => {
             return {
               label: val["label"],
               data: val["data"].map(val => {
