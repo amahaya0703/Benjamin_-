@@ -74,6 +74,7 @@ export default {
 
 <style scoped>
 .wrapper{
+  display: flex;
   margin: 0 auto;
   width: 0rem;
 }

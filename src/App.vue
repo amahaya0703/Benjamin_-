@@ -53,7 +53,6 @@ const config = {
     Diagram(value) {
       axios.get(`https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear?prefCode=${value}`, config)
         .then(response => {
-
           this.Demographics = response.data.result.data.map(val => {
             return {
               label: val["label"],

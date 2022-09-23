@@ -4,11 +4,11 @@
       <li v-for="prefPost in prefPosts" :key="prefPost.id">
       <label :for="prefPost.id">
         <input
-        type="checkbox"
+        type="radio"
+        v-model="prefPosts.id"
         :id="prefPost.id"
-        :checked="prefPost.isChecked"
         :value="prefPost.name"
-        @click.once="table(prefPost.id,prefPost.name);"
+        @click="table(prefPost.id,prefPost.name);"
         >
         {{prefPost.name}}
       </label>
