@@ -5,7 +5,7 @@
       <label :for="prefPost.id">
         <input
         type="radio"
-        v-model="prefPosts.id"
+        v-model="radio"
         :id="prefPost.id"
         :value="prefPost.name"
         @click="table(prefPost.id,prefPost.name);"
@@ -21,6 +21,11 @@
 
 export default {
   props: ["prefPosts"],
+  data() {
+    return {
+      radio:'normal'
+    }
+  },
   methods: {
     table(id,name) {
       this.$emit("on-table", id, name);
